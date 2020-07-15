@@ -1,4 +1,4 @@
-mport pygame
+import pygame
 pygame.init()
 screen_info=pygame.display.Info()
 print(screen_info)
