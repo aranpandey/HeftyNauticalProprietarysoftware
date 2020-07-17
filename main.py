@@ -59,6 +59,7 @@ def main():
     if Player.checkReset(width):
       init()
     elif gets_hit:
+      Player.reset((20,200))
 if __name__=='__main__':
   main()
  
