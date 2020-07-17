@@ -11,10 +11,21 @@ color= (30,0,30)
 Numlevels = 4
 Level = 1
 AsteroidCount = 3
+
 Player = Ship((20,200))
-Attack = Asteroid(random.randint((50,500)),(random.randint(50,500))
-#Asteroids = pygame.sprite.Group()
+#Attack = Asteroid((400,300))
+Asteroids = pygame.sprite.Group()
+
+def init():
+  global AsteroidCount
+  Player.reset((20,200))
+  Asteroids.empty()
+  AsteroidCount += 3
+  for i in range(AsteroidCount):
+    Asteroids.add(Asteroid((400,300))) 
+
 def main():
+  init()
   while Level <= Numlevels:
     clock.tick(60)
     for event in pygame.event.get():
@@ -37,10 +48,17 @@ def main():
         if event.key == pygame.K_LEFT:
           Player.speed[0] = 0
     Player.update()
-    Attack.update()
+    #Attack.update()
     screen.fill(color)
+    Asteroids.update()
+    gets_hit = pygame.sprite.spritecollide(Player, Asteroids, False)
+    Asteroids.draw(screen)
     screen.blit(Player.image, Player.rect)
-    screen.blit(Attack.image, Attack.rect)
+    #screen.blit(Attack.image, Attack.rect)
     pygame.display.flip()
+    if Player.checkReset(width):
+      init()
+    elif gets_hit:
 if __name__=='__main__':
   main()
+ 
