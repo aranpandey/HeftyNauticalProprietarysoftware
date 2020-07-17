@@ -4,7 +4,7 @@ class Ship(pygame.sprite.Sprite):
   def __init__(self, pos):
     super().__init__()
     self.image = pygame.image.load('ship.png')
-    self.image = pygame.transform.smoothscale(self.image,(80,80))
+    self.image = pygame.transform.smoothscale(self.image,(50,50))
     self.rect = self.image.get_rect()
     self.image = pygame.transform.rotate(self.image,(270))
     self.rect.center = pos
